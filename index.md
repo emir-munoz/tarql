@@ -37,11 +37,13 @@ In Tarql, the following SPARQL query:
 
 is equivalent to executing the following over an empty graph:
 
+{% highlight bash %}
     CONSTRUCT { ... }
     WHERE {
       VALUES (...) { ... }
       ...
     }
+{% endhighlight %}
 
 In other words, the CSV file's contents are input into the query as a table of bindings. This allows manipulation of CSV data using the full power of SPARQL 1.1 syntax, and in particular the generation of RDF using `CONSTRUCT` queries. See below for more examples.
 
@@ -64,7 +66,7 @@ For Unix, the executable script is `bin/tarql`. For Windows, `bin\tarql.bat`. Ex
 
 Full options:
 
-```
+{% highlight bash %}
 tarql [options] query.sparql [table.csv [...]]
   Main arguments
       query.sparql           File containing a SPARQL query to be applied to a CSV file
@@ -85,7 +87,7 @@ tarql [options] query.sparql [table.csv [...]]
       --debug                Output information for debugging
       --help
       --version              Version information
-```
+{% endhighlight %}
 
 ## Details
 
@@ -126,26 +128,33 @@ These options can be specified in two ways:
 
 ### List the content of the file, projecting the first 100 rows and only the ?id and ?name bindings
 
+{% highlight bash %}
 	SELECT DISTINCT ?id ?name
 	FROM <file:filename.csv>
 	WHERE {}
 	LIMIT 100
+{% endhighlight %}
 
 ### Skip bad rows
 
+{% highlight bash %}
     SELECT ...
     WHERE { FILTER (BOUND(?d)) }
+{% endhighlight %}
 
 ### Compute additional columns
 
+{% highlight bash %}
     SELECT ...
     WHERE {
       BIND (URI(CONCAT('http://example.com/ns#', ?b)) AS ?uri)
       BIND (STRLANG(?a, 'en') AS ?with_language_tag)
     }
+{% endhighlight %}
 
 ### CONSTRUCT an RDF graph
 
+{% highlight bash %}
     CONSTRUCT {
       ?URI a ex:Organization;
           ex:name ?NameWithLang;
@@ -158,25 +167,32 @@ These options can be specified in two ways:
       BIND (URI(CONCAT('companies/', ?Stock_ticker)) AS ?URI)
       BIND (STRLANG(?Name, "en") AS ?NameWithLang)
     }
+{% endhighlight %}
 
 ### Generate URIs based on the row number
 
+{% highlight bash %}
     ...
     WHERE {
       BIND (URI(CONCAT('companies/', STR(?ROWNUM))) AS ?URI)
     }
     ...
+{% endhighlight %}
 
 ### Count the number of triples from a csv file
 
+{% highlight bash %}
     SELECT (COUNT(*) AS ?count)
     FROM <file.csv>
     WHERE {}
+{% endhighlight %}
 
 ### Provide CSV file encoding and header information in the URL 
 
+{% highlight bash %}
     CONSTRUCT { ... }
     FROM <file.csv#encoding=utf-8;header=absent>
+{% endhighlight %}
 
 This is equivalent to using `<file.csv>` in the `FROM` clause and specifying `--no-header-row` and `--encoding` on the command line.
 
@@ -184,12 +200,13 @@ This is equivalent to using `<file.csv>` in the `FROM` clause and specifying `--
 
 Earlier versions of Tarql had `--no-header-row`/`#header=absent` as the default, and required the use of a convention to enable the header row:
 
+{% highlight bash %}
 	SELECT ?First_name ?Last_name ?Phone_number
 	WHERE { ... }
 	OFFSET 1
+{% endhighlight %}
 
 Here, the `OFFSET 1` is a convention that indicates that the first row is to be used to provide variable names, and not as data. This convention is still supported, but will only be recognized if none of the header-specifying command line options or URL fragment arguments are used.
-
 
 
 ## Building
@@ -198,7 +215,9 @@ Get the code from GitHub: http://github.com/cygri/tarql
 
 Tarql uses Maven. To create executable scripts for Windows and Unix in `/target/appassembler/bin/tarql`:
 
+{% highlight bash %}
     mvn package appassembler:assemble
+{% endhighlight %}
 
 Otherwise it's standard Maven.
 

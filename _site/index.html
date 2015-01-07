@@ -72,12 +72,11 @@
 
 <p>is equivalent to executing the following over an empty graph:</p>
 
-<pre><code>CONSTRUCT { ... }
-WHERE {
-  VALUES (...) { ... }
-  ...
-}
-</code></pre>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">CONSTRUCT <span class="o">{</span> ... <span class="o">}</span>
+    WHERE <span class="o">{</span>
+      VALUES <span class="o">(</span>...<span class="o">)</span> <span class="o">{</span> ... <span class="o">}</span>
+      ...
+    <span class="o">}</span></code></pre></div>
 
 <p>In other words, the CSV file’s contents are input into the query as a table of bindings. This allows manipulation of CSV data using the full power of SPARQL 1.1 syntax, and in particular the generation of RDF using <code>CONSTRUCT</code> queries. See below for more examples.</p>
 
@@ -100,28 +99,26 @@ WHERE {
 
 <p>Full options:</p>
 
-<p><code>
-tarql [options] query.sparql [table.csv [...]]
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">tarql <span class="o">[</span>options<span class="o">]</span> query.sparql <span class="o">[</span>table.csv <span class="o">[</span>...<span class="o">]]</span>
   Main arguments
       query.sparql           File containing a SPARQL query to be applied to a CSV file
-      table.csv              CSV file to be processed; can be omitted if specified in FROM clause
+      table.csv              CSV file to be processed<span class="p">;</span> can be omitted <span class="k">if</span> specified in FROM clause
   Options
-      --test                 Show CONSTRUCT template and first rows only (for query debugging)
+      --test                 Show CONSTRUCT template and first rows only <span class="o">(</span><span class="k">for</span> query debugging<span class="o">)</span>
       -d   --delimiter       Delimiting character of the CSV file
-      -t   --tabs            Specifies that the input is tab-separagted (TSV), overriding -d
+      -t   --tabs            Specifies that the input is tab-separagted <span class="o">(</span>TSV<span class="o">)</span>, overriding -d
       --quotechar            Quote character used in the CSV file
       -p   --escapechar      Character used to escape quotes in the CSV file
-      -e   --encoding        Override CSV file encoding (e.g., utf-8 or latin-1)
-      -H   --no-header-row   CSV file has no header row; use variable names ?a, ?b, ...
-      --header-row           CSV file's first row is a header with variable names (default)
+      -e   --encoding        Override CSV file encoding <span class="o">(</span>e.g., utf-8 or latin-1<span class="o">)</span>
+      -H   --no-header-row   CSV file has no header row<span class="p">;</span> use variable names ?a, ?b, ...
+      --header-row           CSV file<span class="err">&#39;</span>s first row is a header with variable names <span class="o">(</span>default<span class="o">)</span>
       --ntriples             Write N-Triples instead of Turtle
   General
       -v   --verbose         Verbose
       -q   --quiet           Run with minimal output
-      --debug                Output information for debugging
+      --debug                Output information <span class="k">for</span> debugging
       --help
-      --version              Version information
-</code></p>
+      --version              Version information</code></pre></div>
 
 <h2 id="details">Details</h2>
 
@@ -166,64 +163,57 @@ tarql [options] query.sparql [table.csv [...]]
 
 <h3 id="list-the-content-of-the-file-projecting-the-first-100-rows-and-only-the-id-and-name-bindings">List the content of the file, projecting the first 100 rows and only the ?id and ?name bindings</h3>
 
-<pre><code>SELECT DISTINCT ?id ?name
-FROM &lt;file:filename.csv&gt;
-WHERE {}
-LIMIT 100
-</code></pre>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">SELECT DISTINCT ?id ?name
+	FROM &lt;file:filename.csv&gt;
+	WHERE <span class="o">{}</span>
+	LIMIT 100</code></pre></div>
 
 <h3 id="skip-bad-rows">Skip bad rows</h3>
 
-<pre><code>SELECT ...
-WHERE { FILTER (BOUND(?d)) }
-</code></pre>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">SELECT ...
+    WHERE <span class="o">{</span> FILTER <span class="o">(</span>BOUND<span class="o">(</span>?d<span class="o">))</span> <span class="o">}</span></code></pre></div>
 
 <h3 id="compute-additional-columns">Compute additional columns</h3>
 
-<pre><code>SELECT ...
-WHERE {
-  BIND (URI(CONCAT('http://example.com/ns#', ?b)) AS ?uri)
-  BIND (STRLANG(?a, 'en') AS ?with_language_tag)
-}
-</code></pre>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">SELECT ...
+    WHERE <span class="o">{</span>
+      BIND <span class="o">(</span>URI<span class="o">(</span>CONCAT<span class="o">(</span><span class="s1">&#39;http://example.com/ns#&#39;</span>, ?b<span class="o">))</span> AS ?uri<span class="o">)</span>
+      BIND <span class="o">(</span>STRLANG<span class="o">(</span>?a, <span class="s1">&#39;en&#39;</span><span class="o">)</span> AS ?with_language_tag<span class="o">)</span>
+    <span class="o">}</span></code></pre></div>
 
 <h3 id="construct-an-rdf-graph">CONSTRUCT an RDF graph</h3>
 
-<pre><code>CONSTRUCT {
-  ?URI a ex:Organization;
-      ex:name ?NameWithLang;
-      ex:CIK ?CIK;
-      ex:LEI ?LEI;
-      ex:ticker ?Stock_ticker;
-}
-FROM &lt;file:companies.csv&gt;
-WHERE {
-  BIND (URI(CONCAT('companies/', ?Stock_ticker)) AS ?URI)
-  BIND (STRLANG(?Name, "en") AS ?NameWithLang)
-}
-</code></pre>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">CONSTRUCT <span class="o">{</span>
+      ?URI a ex:Organization<span class="p">;</span>
+          ex:name ?NameWithLang<span class="p">;</span>
+          ex:CIK ?CIK<span class="p">;</span>
+          ex:LEI ?LEI<span class="p">;</span>
+          ex:ticker ?Stock_ticker<span class="p">;</span>
+    <span class="o">}</span>
+    FROM &lt;file:companies.csv&gt;
+    WHERE <span class="o">{</span>
+      BIND <span class="o">(</span>URI<span class="o">(</span>CONCAT<span class="o">(</span><span class="s1">&#39;companies/&#39;</span>, ?Stock_ticker<span class="o">))</span> AS ?URI<span class="o">)</span>
+      BIND <span class="o">(</span>STRLANG<span class="o">(</span>?Name, <span class="s2">&quot;en&quot;</span><span class="o">)</span> AS ?NameWithLang<span class="o">)</span>
+    <span class="o">}</span></code></pre></div>
 
 <h3 id="generate-uris-based-on-the-row-number">Generate URIs based on the row number</h3>
 
-<pre><code>...
-WHERE {
-  BIND (URI(CONCAT('companies/', STR(?ROWNUM))) AS ?URI)
-}
-...
-</code></pre>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">...
+    WHERE <span class="o">{</span>
+      BIND <span class="o">(</span>URI<span class="o">(</span>CONCAT<span class="o">(</span><span class="s1">&#39;companies/&#39;</span>, STR<span class="o">(</span>?ROWNUM<span class="o">)))</span> AS ?URI<span class="o">)</span>
+    <span class="o">}</span>
+    ...</code></pre></div>
 
 <h3 id="count-the-number-of-triples-from-a-csv-file">Count the number of triples from a csv file</h3>
 
-<pre><code>SELECT (COUNT(*) AS ?count)
-FROM &lt;file.csv&gt;
-WHERE {}
-</code></pre>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">SELECT <span class="o">(</span>COUNT<span class="o">(</span>*<span class="o">)</span> AS ?count<span class="o">)</span>
+    FROM &lt;file.csv&gt;
+    WHERE <span class="o">{}</span></code></pre></div>
 
 <h3 id="provide-csv-file-encoding-and-header-information-in-the-url">Provide CSV file encoding and header information in the URL</h3>
 
-<pre><code>CONSTRUCT { ... }
-FROM &lt;file.csv#encoding=utf-8;header=absent&gt;
-</code></pre>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">CONSTRUCT <span class="o">{</span> ... <span class="o">}</span>
+    FROM &lt;file.csv#encoding<span class="o">=</span>utf-8<span class="p">;</span><span class="nv">header</span><span class="o">=</span>absent&gt;</code></pre></div>
 
 <p>This is equivalent to using <code>&lt;file.csv&gt;</code> in the <code>FROM</code> clause and specifying <code>--no-header-row</code> and <code>--encoding</code> on the command line.</p>
 
@@ -231,10 +221,9 @@ FROM &lt;file.csv#encoding=utf-8;header=absent&gt;
 
 <p>Earlier versions of Tarql had <code>--no-header-row</code>/<code>#header=absent</code> as the default, and required the use of a convention to enable the header row:</p>
 
-<pre><code>SELECT ?First_name ?Last_name ?Phone_number
-WHERE { ... }
-OFFSET 1
-</code></pre>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">SELECT ?First_name ?Last_name ?Phone_number
+	WHERE <span class="o">{</span> ... <span class="o">}</span>
+	OFFSET 1</code></pre></div>
 
 <p>Here, the <code>OFFSET 1</code> is a convention that indicates that the first row is to be used to provide variable names, and not as data. This convention is still supported, but will only be recognized if none of the header-specifying command line options or URL fragment arguments are used.</p>
 
@@ -244,8 +233,7 @@ OFFSET 1
 
 <p>Tarql uses Maven. To create executable scripts for Windows and Unix in <code>/target/appassembler/bin/tarql</code>:</p>
 
-<pre><code>mvn package appassembler:assemble
-</code></pre>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">mvn package appassembler:assemble</code></pre></div>
 
 <p>Otherwise it’s standard Maven.</p>
 
