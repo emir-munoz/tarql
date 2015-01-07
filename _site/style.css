@@ -238,8 +238,9 @@ img {
 
 .site-description {
   margin: -5px 0 0 0;
-  color: #666666;
-  font-size: 16px;
+  color: #2fa4e7;
+  font-size: 19px;
+  font-style: italic;
 }
 @media screen and (max-width: 640px) {
   .site-description {
