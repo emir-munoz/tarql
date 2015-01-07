@@ -27,11 +27,13 @@ Tarql is a command-line tool for converting CSV files to RDF using SPARQL 1.1 sy
 
 In Tarql, the following SPARQL query:
 
+{% highlight bash %}
     CONSTRUCT { ... }
     FROM <file:table.csv>
     WHERE {
       ...
     }
+{% endhighlight %}
 
 is equivalent to executing the following over an empty graph:
 
