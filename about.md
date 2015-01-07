@@ -4,12 +4,15 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+Tarql is a project initiated by Rickard Cyganiak (@cygri) which aims to convert CSV files to RDF using SPARQL 1.1 syntax.
 
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself. 
+Original repository in GitHub: [https://github.com/cygri/tarql]()
 
+
+{% comment %} 
 ### Contact me
 
 [email@domain.com](mailto:email@domain.com)
+{% endcomment %} 
