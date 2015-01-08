@@ -5,7 +5,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
-    <title>Examples – Tarql – SPARQL for Tables: Turn CSV into RDF using SPARQL syntax</title>
+    <title>Documentation – Tarql – SPARQL for Tables: Turn CSV into RDF using SPARQL syntax</title>
 
     <meta name="author" content="Tarql" />
     <meta name="description" content="SPARQL for Tables: Turn CSV into RDF using SPARQL syntax">
@@ -43,12 +43,65 @@
     <div id="main" role="main" class="container">
       <article class="page">
   
-  <h1>Examples</h1>
+  <h1>Documentation</h1>
 
   <div class="entry">
-    <h3 id="example-1">Example 1</h3>
+    <h3 id="downloading">Downloading</h3>
 
-<h3 id="example-2">Example 2</h3>
+<p>Get Tarql latest releases from the <a href="http://lab.linkeddata.deri.ie/2013/tarql/">dowloads page</a> of the project. This documentation is for Tarql version 10a.
+The downloads page contains Tarql versions with all dependencies. </p>
+
+<p>Tarql runs on both Windows and Unix systems. It runs locally in a single machine — all you need is to have <code>java</code> version 1.7 or above installed on your system, 
+and configure <code>PATH</code>, or the <code>JAVA_HOME</code> environment variables pointing to the Java installation.</p>
+
+<h3 id="building-from-source-code">Building from Source Code</h3>
+
+<p>Get the code from <a href="http://github.com/cygri/tarql">Tarql GitHub Project</a></p>
+
+<p>Tarql uses Maven. To create executable scripts for Windows and Unix in <code>/target/appassembler/bin/</code>:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">~<span class="nv">$ </span>mvn clean install -DskipTests</code></pre></div>
+
+<h3 id="running-the-examples">Running the Examples</h3>
+
+<p>To run the examples you need to first create the executable scripts as explained in last point.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">~<span class="nv">$ </span><span class="nb">cd </span>tarql/target/appassembler
+~<span class="nv">$ </span>sh bin/tarql --ntriples ../../examples/sample-2.sparql ../../examples/TechCrunchcontinentalUSA.csv</code></pre></div>
+
+<h3 id="documentation">Documentation</h3>
+
+<p>Java documentation is available <a href="/tarql/docs/index.html">here</a>.</p>
+
+<h3 id="community">Community</h3>
+
+<p><em>TBC: mailing list</em></p>
+
+<h4 id="reporting-issues">Reporting Issues</h4>
+
+<p>If you’d like to report a bug in Tarql or ask for a new feature, open an issue on the <a href="https://github.com/cygri/tarql/issues">Tarql GitHub Project</a>. For general usage help, you should email the user <a href="">mailing list</a>.</p>
+
+<h4 id="contribute-code">Contribute Code</h4>
+
+<p>You can contribute to the project submitting GitHub pull requests. Start by opening an issue for your change on the <a href="https://github.com/cygri/tarql/issues">Tarql GitHub Project</a> (and make sure to search whether
+there is an existing issue). Please use descriptive names in your pull requests. You can always check the code in the [https://github.com/cygri/tarql] repository.</p>
+
+<p>Currently there are some points in the TO DO list listed below:</p>
+
+<ul>
+  <li>Set base URI from command line</li>
+  <li>Choice of output format, writing to file, etc.</li>
+  <li>Allow feeding of triples from RDF files into the mapping process</li>
+  <li>Optionally generate VoID/PROV triples</li>
+  <li>Find a way of producing consistent blank nodes from strings (esp. in multiple CONSTRUCT clauses)</li>
+  <li>Find a way of using the table multiple times, e.g.: <code>{ { SELECT ?author1 { TABLE } } UNION { SELECT ?author2 { TABLE } } }</code></li>
+  <li>Handle tables where repeated values within a column are omitted, maybe tarql:valueFromPreviousRow(?a))</li>
+  <li>Make a proper homepage and set it up at http://tarql.deri.ie/</li>
+  <li>Support Excel files?</li>
+  <li>Read input from stdin?</li>
+  <li>Web service?</li>
+  <li>Get this into ARQ!?</li>
+</ul>
 
   </div>
 </article>

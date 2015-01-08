@@ -32,6 +32,7 @@
           </div>
           
           <nav>
+			<a href="/tarql/documentation">Documentation</a>
             <a href="/tarql/examples">Examples</a>
             <a href="/tarql/about">About</a>
           </nav>
@@ -65,24 +66,20 @@
 <p>In Tarql, the following SPARQL query:</p>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">CONSTRUCT <span class="o">{</span> ... <span class="o">}</span>
-    FROM &lt;file:table.csv&gt;
-    WHERE <span class="o">{</span>
-      ...
-    <span class="o">}</span></code></pre></div>
+  FROM &lt;file:table.csv&gt;
+  WHERE <span class="o">{</span>
+    ...
+  <span class="o">}</span></code></pre></div>
 
 <p>is equivalent to executing the following over an empty graph:</p>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">CONSTRUCT <span class="o">{</span> ... <span class="o">}</span>
-    WHERE <span class="o">{</span>
-      VALUES <span class="o">(</span>...<span class="o">)</span> <span class="o">{</span> ... <span class="o">}</span>
-      ...
-    <span class="o">}</span></code></pre></div>
+	WHERE <span class="o">{</span>
+	  VALUES <span class="o">(</span>...<span class="o">)</span> <span class="o">{</span> ... <span class="o">}</span>
+	  ...
+<span class="o">}</span></code></pre></div>
 
 <p>In other words, the CSV file’s contents are input into the query as a table of bindings. This allows manipulation of CSV data using the full power of SPARQL 1.1 syntax, and in particular the generation of RDF using <code>CONSTRUCT</code> queries. See below for more examples.</p>
-
-<h2 id="download">Download</h2>
-
-<p>Get the latest releases from here: http://lab.linkeddata.deri.ie/2013/tarql/</p>
 
 <h2 id="command-line">Command line</h2>
 
@@ -227,32 +224,6 @@
 
 <p>Here, the <code>OFFSET 1</code> is a convention that indicates that the first row is to be used to provide variable names, and not as data. This convention is still supported, but will only be recognized if none of the header-specifying command line options or URL fragment arguments are used.</p>
 
-<h2 id="building">Building</h2>
-
-<p>Get the code from GitHub: http://github.com/cygri/tarql</p>
-
-<p>Tarql uses Maven. To create executable scripts for Windows and Unix in <code>/target/appassembler/bin/tarql</code>:</p>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">mvn package appassembler:assemble</code></pre></div>
-
-<p>Otherwise it’s standard Maven.</p>
-
-<h2 id="todo">TODO</h2>
-
-<ul>
-  <li>Set base URI from command line</li>
-  <li>Choice of output format, writing to file, etc.</li>
-  <li>Allow feeding of triples from RDF files into the mapping process</li>
-  <li>Optionally generate VoID/PROV triples</li>
-  <li>Find a way of producing consistent blank nodes from strings (esp. in multiple CONSTRUCT clauses)</li>
-  <li>Find a way of using the table multiple times, e.g.: <code>{ { SELECT ?author1 { TABLE } } UNION { SELECT ?author2 { TABLE } } }</code></li>
-  <li>Handle tables where repeated values within a column are omitted, maybe tarql:valueFromPreviousRow(?a))</li>
-  <li>Make a proper homepage and set it up at http://tarql.deri.ie/</li>
-  <li>Support Excel files?</li>
-  <li>Read input from stdin?</li>
-  <li>Web service?</li>
-  <li>Get this into ARQ!?</li>
-</ul>
 
     </div>
 

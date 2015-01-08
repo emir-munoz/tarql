@@ -162,13 +162,13 @@ img {
 }
 
 ::-moz-selection {
-  color: black;
-  background: #eeeeee;
+  color: white;
+  background: #317eac;
 }
 
 ::selection {
-  color: black;
-  background: #eeeeee;
+  color: white;
+  background: #317eac;
 }
 
 .clearfix:before,
