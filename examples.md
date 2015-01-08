@@ -69,3 +69,57 @@ In the previous mapping we have indicated the following:
 * which file are we trying to convert (`file:TechCrunchcontinentalUSA.csv`)
 * how we can apply datatypes to some of the variables (BIND clauses)
 
+#### Result
+
+Executing Tarql with the previous mapping:
+
+{% highlight bash %}
+tarql/target/appassembler$ sh bin/tarql --ntriples ../../test/sample-2.sparql ../../test/TechCrunchcontinentalUSA.csv
+{% endhighlight %}
+
+We do get the following RDF in N-Triples format.
+
+{% highlight bash %}
+<http://ex.org/companies/lifelock> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://ex.org/a#Organization> .
+<http://ex.org/companies/lifelock> <http://ex.org/a#permalink> "lifelock" .
+<http://ex.org/companies/lifelock> <http://ex.org/a#name> "LifeLock" .
+<http://ex.org/companies/lifelock> <http://ex.org/a#category> "web" .
+<http://ex.org/companies/lifelock> <http://ex.org/a#city> "Tempe" .
+<http://ex.org/companies/lifelock> <http://ex.org/a#state> "AZ" .
+<http://ex.org/companies/lifelock> <http://ex.org/a#fundationDate> "1-May-07" .
+<http://ex.org/companies/lifelock> <http://ex.org/a#raisedAmt> "6850000"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<http://ex.org/companies/lifelock> <http://ex.org/a#raisedCurrency> "USD" .
+<http://ex.org/companies/lifelock> <http://ex.org/a#round> <http://example.com/b> .
+<http://ex.org/companies/lifelock> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://ex.org/a#Organization> .
+<http://ex.org/companies/lifelock> <http://ex.org/a#permalink> "lifelock" .
+<http://ex.org/companies/lifelock> <http://ex.org/a#name> "LifeLock" .
+<http://ex.org/companies/lifelock> <http://ex.org/a#category> "web" .
+<http://ex.org/companies/lifelock> <http://ex.org/a#city> "Tempe" .
+<http://ex.org/companies/lifelock> <http://ex.org/a#state> "AZ" .
+<http://ex.org/companies/lifelock> <http://ex.org/a#fundationDate> "1-Oct-06" .
+<http://ex.org/companies/lifelock> <http://ex.org/a#raisedAmt> "6000000"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<http://ex.org/companies/lifelock> <http://ex.org/a#raisedCurrency> "USD" .
+<http://ex.org/companies/lifelock> <http://ex.org/a#round> <http://example.com/> .
+<http://ex.org/companies/lifelock> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://ex.org/a#Organization> .
+<http://ex.org/companies/lifelock> <http://ex.org/a#permalink> "lifelock" .
+<http://ex.org/companies/lifelock> <http://ex.org/a#name> "LifeLock" .
+<http://ex.org/companies/lifelock> <http://ex.org/a#category> "web" .
+<http://ex.org/companies/lifelock> <http://ex.org/a#city> "Tempe" .
+<http://ex.org/companies/lifelock> <http://ex.org/a#state> "AZ" .
+<http://ex.org/companies/lifelock> <http://ex.org/a#fundationDate> "1-Jan-08" .
+<http://ex.org/companies/lifelock> <http://ex.org/a#raisedAmt> "25000000"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<http://ex.org/companies/lifelock> <http://ex.org/a#raisedCurrency> "USD" .
+<http://ex.org/companies/lifelock> <http://ex.org/a#round> "c" .
+<http://ex.org/companies/mycityfaces> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://ex.org/a#Organization> .
+<http://ex.org/companies/mycityfaces> <http://ex.org/a#permalink> "mycityfaces" .
+<http://ex.org/companies/mycityfaces> <http://ex.org/a#name> "MyCityFaces" .
+<http://ex.org/companies/mycityfaces> <http://ex.org/a#employees> "7"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://ex.org/companies/mycityfaces> <http://ex.org/a#category> "web" .
+<http://ex.org/companies/mycityfaces> <http://ex.org/a#city> "Scottsdale" .
+<http://ex.org/companies/mycityfaces> <http://ex.org/a#state> "AZ" .
+<http://ex.org/companies/mycityfaces> <http://ex.org/a#fundationDate> "1-Jan-08" .
+<http://ex.org/companies/mycityfaces> <http://ex.org/a#raisedAmt> "50000"^^<http://www.w3.org/2001/XMLSchema#decimal> .
+<http://ex.org/companies/mycityfaces> <http://ex.org/a#raisedCurrency> "USD" .
+<http://ex.org/companies/mycityfaces> <http://ex.org/a#round> "seed" .
+...
+{% endhighlight %}

@@ -108,6 +108,57 @@ WHERE <span class="o">{</span>
   <li>how we can apply datatypes to some of the variables (BIND clauses)</li>
 </ul>
 
+<h4 id="result">Result</h4>
+
+<p>Executing Tarql with the previous mapping:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">tarql/target/appassembler<span class="nv">$ </span>sh bin/tarql --ntriples ../../test/sample-2.sparql ../../test/TechCrunchcontinentalUSA.csv</code></pre></div>
+
+<p>We do get the following RDF in N-Triples format.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">&lt;http://ex.org/companies/lifelock&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://ex.org/a#Organization&gt; .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#permalink&gt; <span class="s2">&quot;lifelock&quot;</span> .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#name&gt; <span class="s2">&quot;LifeLock&quot;</span> .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#category&gt; <span class="s2">&quot;web&quot;</span> .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#city&gt; <span class="s2">&quot;Tempe&quot;</span> .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#state&gt; <span class="s2">&quot;AZ&quot;</span> .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#fundationDate&gt; <span class="s2">&quot;1-May-07&quot;</span> .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#raisedAmt&gt; <span class="s2">&quot;6850000&quot;</span>^^&lt;http://www.w3.org/2001/XMLSchema#decimal&gt; .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#raisedCurrency&gt; <span class="s2">&quot;USD&quot;</span> .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#round&gt; &lt;http://example.com/b&gt; .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://ex.org/a#Organization&gt; .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#permalink&gt; <span class="s2">&quot;lifelock&quot;</span> .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#name&gt; <span class="s2">&quot;LifeLock&quot;</span> .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#category&gt; <span class="s2">&quot;web&quot;</span> .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#city&gt; <span class="s2">&quot;Tempe&quot;</span> .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#state&gt; <span class="s2">&quot;AZ&quot;</span> .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#fundationDate&gt; <span class="s2">&quot;1-Oct-06&quot;</span> .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#raisedAmt&gt; <span class="s2">&quot;6000000&quot;</span>^^&lt;http://www.w3.org/2001/XMLSchema#decimal&gt; .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#raisedCurrency&gt; <span class="s2">&quot;USD&quot;</span> .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#round&gt; &lt;http://example.com/&gt; .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://ex.org/a#Organization&gt; .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#permalink&gt; <span class="s2">&quot;lifelock&quot;</span> .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#name&gt; <span class="s2">&quot;LifeLock&quot;</span> .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#category&gt; <span class="s2">&quot;web&quot;</span> .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#city&gt; <span class="s2">&quot;Tempe&quot;</span> .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#state&gt; <span class="s2">&quot;AZ&quot;</span> .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#fundationDate&gt; <span class="s2">&quot;1-Jan-08&quot;</span> .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#raisedAmt&gt; <span class="s2">&quot;25000000&quot;</span>^^&lt;http://www.w3.org/2001/XMLSchema#decimal&gt; .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#raisedCurrency&gt; <span class="s2">&quot;USD&quot;</span> .
+&lt;http://ex.org/companies/lifelock&gt; &lt;http://ex.org/a#round&gt; <span class="s2">&quot;c&quot;</span> .
+&lt;http://ex.org/companies/mycityfaces&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://ex.org/a#Organization&gt; .
+&lt;http://ex.org/companies/mycityfaces&gt; &lt;http://ex.org/a#permalink&gt; <span class="s2">&quot;mycityfaces&quot;</span> .
+&lt;http://ex.org/companies/mycityfaces&gt; &lt;http://ex.org/a#name&gt; <span class="s2">&quot;MyCityFaces&quot;</span> .
+&lt;http://ex.org/companies/mycityfaces&gt; &lt;http://ex.org/a#employees&gt; <span class="s2">&quot;7&quot;</span>^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+&lt;http://ex.org/companies/mycityfaces&gt; &lt;http://ex.org/a#category&gt; <span class="s2">&quot;web&quot;</span> .
+&lt;http://ex.org/companies/mycityfaces&gt; &lt;http://ex.org/a#city&gt; <span class="s2">&quot;Scottsdale&quot;</span> .
+&lt;http://ex.org/companies/mycityfaces&gt; &lt;http://ex.org/a#state&gt; <span class="s2">&quot;AZ&quot;</span> .
+&lt;http://ex.org/companies/mycityfaces&gt; &lt;http://ex.org/a#fundationDate&gt; <span class="s2">&quot;1-Jan-08&quot;</span> .
+&lt;http://ex.org/companies/mycityfaces&gt; &lt;http://ex.org/a#raisedAmt&gt; <span class="s2">&quot;50000&quot;</span>^^&lt;http://www.w3.org/2001/XMLSchema#decimal&gt; .
+&lt;http://ex.org/companies/mycityfaces&gt; &lt;http://ex.org/a#raisedCurrency&gt; <span class="s2">&quot;USD&quot;</span> .
+&lt;http://ex.org/companies/mycityfaces&gt; &lt;http://ex.org/a#round&gt; <span class="s2">&quot;seed&quot;</span> .
+...</code></pre></div>
+
 
   </div>
 </article>
