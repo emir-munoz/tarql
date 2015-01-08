@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Documentation
-permalink: /documentation/
+permalink: /docs/
 ---
 
 
@@ -34,22 +34,22 @@ To run the examples you need to first create the executable scripts as explained
 
 ### Documentation
 
-Java documentation is available [here](/tarql/docs/index.html).
+Java documentation is available [here](/tarql/javadocs/index.html).
 
 ### Community
 
-_TBC: mailing list_
+_TBD: [mailing list](#)_
 
 #### Reporting Issues
 
-If you'd like to report a bug in Tarql or ask for a new feature, open an issue on the [Tarql GitHub Project](https://github.com/cygri/tarql/issues). For general usage help, you should email the user [mailing list]().
+If you'd like to report a bug in Tarql or ask for a new feature, open an issue on the [Tarql GitHub Project](https://github.com/cygri/tarql/issues). For general usage help, you should email the user [mailing list](#).
 
 #### Contribute Code
 
 You can contribute to the project submitting GitHub pull requests. Start by opening an issue for your change on the [Tarql GitHub Project](https://github.com/cygri/tarql/issues) (and make sure to search whether
-there is an existing issue). Please use descriptive names in your pull requests. You can always check the code in the [https://github.com/cygri/tarql] repository.
+there is an existing issue). Please use descriptive names in your pull requests. You can always check the code in the [https://github.com/cygri/tarql]() repository.
 
-Currently there are some points in the TO DO list listed below:
+Currently there are some points in the **TO DO** list listed below:
 
 * Set base URI from command line
 * Choice of output format, writing to file, etc.
