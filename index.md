@@ -203,4 +203,4 @@ Earlier versions of Tarql had `--no-header-row`/`#header=absent` as the default,
 
 Here, the `OFFSET 1` is a convention that indicates that the first row is to be used to provide variable names, and not as data. This convention is still supported, but will only be recognized if none of the header-specifying command line options or URL fragment arguments are used.
 
-Last Update: {{ page.date | date: '%B %d, %Y' }}
+Last Update: {{ site.time | date: '%B %d, %Y' }}
