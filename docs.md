@@ -63,3 +63,6 @@ Currently there are some points in the **TO DO** list listed below:
 * Read input from stdin?
 * Web service?
 * Get this into ARQ!?
+
+
+Last Update: {{ site.time | date: '%B %d, %Y' }}

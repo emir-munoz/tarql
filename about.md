@@ -10,6 +10,17 @@ Tarql is a project initiated by Rickard Cyganiak (@cygri) which aims to convert 
 
 Original repository in GitHub: [https://github.com/cygri/tarql]()
 
+### Changelog
+
+#### Current version (2015-01-08)
+##### New
+* [Issue #1](https://github.com/emir-munoz/tarql/issues/1) URLs present in a CSV row are mapped as resources
+
+#### 1.0a (2014-10-02)
+* Second release
+
+#### 0.9 (2013-02-08)
+* First release
 
 {% comment %} 
 ### Contact me
