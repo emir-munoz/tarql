@@ -13,7 +13,7 @@ Original repository in GitHub: [https://github.com/cygri/tarql]()
 ### Changelog
 
 #### Current version (2015-01-08)
-##### New
+#### New
 * [Issue #1](https://github.com/emir-munoz/tarql/issues/1) URLs present in a CSV row are mapped as resources
 
 #### 1.0a (2014-10-02)
