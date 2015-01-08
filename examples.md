@@ -4,12 +4,12 @@ title: Examples
 permalink: /examples/
 ---
 
-
 ### Example \#1
 
 #### CSV data
 
-The following lines are part of a CSV file (`TechCrunchcontinentalUSA.csv`) snapshot that contains information about companies.
+The following lines are part of a CSV file ([TechCrunchcontinentalUSA.csv](https://github.com/emir-munoz/tarql/blob/master/examples/TechCrunchcontinentalUSA.csv)) 
+snapshot that contains information about companies.
 
 {% highlight bash %}
 permalink,company,numEmps,category,city,state,fundedDate,raisedAmt,raisedCurrency,round
@@ -124,3 +124,6 @@ We do get the following RDF in N-Triples format.
 <http://ex.org/companies/mycityfaces> <http://ex.org/a#round> "seed" .
 ...
 {% endhighlight %}
+
+
+Last Update: {{ site.time | date: '%B %d, %Y' }}

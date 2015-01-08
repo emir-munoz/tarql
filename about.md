@@ -29,3 +29,6 @@ Original repository in GitHub: [https://github.com/cygri/tarql]()
 
 [email@domain.com](mailto:email@domain.com)
 {% endcomment %} 
+
+
+Last Update: {{ site.time | date: '%B %d, %Y' }}
