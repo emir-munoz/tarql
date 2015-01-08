@@ -28,21 +28,23 @@ Tarql is a command-line tool for converting CSV files to RDF using SPARQL 1.1 sy
 In Tarql, the following SPARQL query:
 
 {% highlight bash %}
-    CONSTRUCT { ... }
-    FROM <file:table.csv>
-    WHERE {
-      ...
-    }
+
+	CONSTRUCT { ... }
+	FROM <file:table.csv>
+	WHERE {
+	  ...
+	}
 {% endhighlight %}
 
 is equivalent to executing the following over an empty graph:
 
 {% highlight bash %}
-    CONSTRUCT { ... }
-    WHERE {
-      VALUES (...) { ... }
-      ...
-    }
+
+	CONSTRUCT { ... }
+	WHERE {
+	  VALUES (...) { ... }
+	  ...
+}
 {% endhighlight %}
 
 In other words, the CSV file's contents are input into the query as a table of bindings. This allows manipulation of CSV data using the full power of SPARQL 1.1 syntax, and in particular the generation of RDF using `CONSTRUCT` queries. See below for more examples.
@@ -62,6 +64,7 @@ For Unix, the executable script is `bin/tarql`. For Windows, `bin\tarql.bat`. Ex
 Full options:
 
 {% highlight bash %}
+
 tarql [options] query.sparql [table.csv [...]]
   Main arguments
       query.sparql           File containing a SPARQL query to be applied to a CSV file
@@ -124,6 +127,7 @@ These options can be specified in two ways:
 ### List the content of the file, projecting the first 100 rows and only the ?id and ?name bindings
 
 {% highlight bash %}
+
 	SELECT DISTINCT ?id ?name
 	FROM <file:filename.csv>
 	WHERE {}
@@ -133,6 +137,7 @@ These options can be specified in two ways:
 ### Skip bad rows
 
 {% highlight bash %}
+
     SELECT ...
     WHERE { FILTER (BOUND(?d)) }
 {% endhighlight %}
@@ -140,6 +145,7 @@ These options can be specified in two ways:
 ### Compute additional columns
 
 {% highlight bash %}
+
     SELECT ...
     WHERE {
       BIND (URI(CONCAT('http://example.com/ns#', ?b)) AS ?uri)
@@ -150,7 +156,8 @@ These options can be specified in two ways:
 ### CONSTRUCT an RDF graph
 
 {% highlight bash %}
-    CONSTRUCT {
+
+	CONSTRUCT {
       ?URI a ex:Organization;
           ex:name ?NameWithLang;
           ex:CIK ?CIK;
@@ -167,6 +174,7 @@ These options can be specified in two ways:
 ### Generate URIs based on the row number
 
 {% highlight bash %}
+
     ...
     WHERE {
       BIND (URI(CONCAT('companies/', STR(?ROWNUM))) AS ?URI)
@@ -177,6 +185,7 @@ These options can be specified in two ways:
 ### Count the number of triples from a csv file
 
 {% highlight bash %}
+
     SELECT (COUNT(*) AS ?count)
     FROM <file.csv>
     WHERE {}
@@ -185,6 +194,7 @@ These options can be specified in two ways:
 ### Provide CSV file encoding and header information in the URL 
 
 {% highlight bash %}
+
     CONSTRUCT { ... }
     FROM <file.csv#encoding=utf-8;header=absent>
 {% endhighlight %}
@@ -196,6 +206,7 @@ This is equivalent to using `<file.csv>` in the `FROM` clause and specifying `--
 Earlier versions of Tarql had `--no-header-row`/`#header=absent` as the default, and required the use of a convention to enable the header row:
 
 {% highlight bash %}
+
 	SELECT ?First_name ?Last_name ?Phone_number
 	WHERE { ... }
 	OFFSET 1
@@ -203,18 +214,3 @@ Earlier versions of Tarql had `--no-header-row`/`#header=absent` as the default,
 
 Here, the `OFFSET 1` is a convention that indicates that the first row is to be used to provide variable names, and not as data. This convention is still supported, but will only be recognized if none of the header-specifying command line options or URL fragment arguments are used.
 
-
-## TODO
-
-* Set base URI from command line
-* Choice of output format, writing to file, etc.
-* Allow feeding of triples from RDF files into the mapping process
-* Optionally generate VoID/PROV triples
-* Find a way of producing consistent blank nodes from strings (esp. in multiple CONSTRUCT clauses)
-* Find a way of using the table multiple times, e.g.: `{ { SELECT ?author1 { TABLE } } UNION { SELECT ?author2 { TABLE } } }`
-* Handle tables where repeated values within a column are omitted, maybe tarql:valueFromPreviousRow(?a))
-* Make a proper homepage and set it up at http://tarql.deri.ie/
-* Support Excel files?
-* Read input from stdin?
-* Web service?
-* Get this into ARQ!?
