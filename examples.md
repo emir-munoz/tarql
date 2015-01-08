@@ -74,7 +74,8 @@ In the previous mapping we have indicated the following:
 Executing Tarql with the previous mapping:
 
 {% highlight bash %}
-tarql/target/appassembler$ sh bin/tarql --ntriples ../../test/sample-2.sparql ../../test/TechCrunchcontinentalUSA.csv
+~$ cd tarql/target/appassembler
+~$ sh bin/tarql --ntriples ../../examples/sample-2.sparql ../../examples/TechCrunchcontinentalUSA.csv
 {% endhighlight %}
 
 We do get the following RDF in N-Triples format.
