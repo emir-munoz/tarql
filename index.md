@@ -48,11 +48,6 @@ is equivalent to executing the following over an empty graph:
 In other words, the CSV file's contents are input into the query as a table of bindings. This allows manipulation of CSV data using the full power of SPARQL 1.1 syntax, and in particular the generation of RDF using `CONSTRUCT` queries. See below for more examples.
 
 
-## Download
-
-Get the latest releases from here: http://lab.linkeddata.deri.ie/2013/tarql/
-
-
 ## Command line
 
 For Unix, the executable script is `bin/tarql`. For Windows, `bin\tarql.bat`. Example invocations:
@@ -207,19 +202,6 @@ Earlier versions of Tarql had `--no-header-row`/`#header=absent` as the default,
 {% endhighlight %}
 
 Here, the `OFFSET 1` is a convention that indicates that the first row is to be used to provide variable names, and not as data. This convention is still supported, but will only be recognized if none of the header-specifying command line options or URL fragment arguments are used.
-
-
-## Building
-
-Get the code from GitHub: http://github.com/cygri/tarql
-
-Tarql uses Maven. To create executable scripts for Windows and Unix in `/target/appassembler/bin/tarql`:
-
-{% highlight bash %}
-    mvn package appassembler:assemble
-{% endhighlight %}
-
-Otherwise it's standard Maven.
 
 
 ## TODO
