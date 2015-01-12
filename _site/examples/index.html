@@ -76,7 +76,7 @@ facebook,Facebook,450,web,Palo Alto,CA,1-May-08,100000000,USD,debt_round
 
 <h4 id="tarql-mapping">Tarql mapping</h4>
 
-<p>We could define a mapping to convert the previous CSV file into RDF triples using the following mapping:</p>
+<p>We could define a mapping to convert the previous CSV file into RDF triples as follows:</p>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">PREFIX ex: &lt;http://ex.org/a#&gt;
 PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
@@ -161,7 +161,96 @@ WHERE <span class="o">{</span>
 &lt;http://ex.org/companies/mycityfaces&gt; &lt;http://ex.org/a#round&gt; <span class="s2">&quot;seed&quot;</span> .
 ...</code></pre></div>
 
-<p>Last Update: January 08, 2015</p>
+<hr />
+
+<h3 id="example-2">Example #2</h3>
+
+<h4 id="csv-data-1">CSV data</h4>
+
+<p>The following lines are part of a CSV file (<a href="https://github.com/emir-munoz/tarql/blob/master/examples/ArsenalFC/table_2.csv">table_2.csv</a>) 
+snapshot that contains information first-team squad of Arsenal F.C. according to its Wikipedia <a href="https://en.wikipedia.org/wiki/Arsenal_F.C.">article</a>.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="s2">&quot;No.&quot;</span>,<span class="s2">&quot;&quot;</span>,<span class="s2">&quot;Position&quot;</span>,<span class="s2">&quot;Player&quot;</span>
+<span class="s2">&quot;1&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Poland&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Goalkeeper_(association_football)&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Wojciech_Szcz%C4%99sny&quot;</span>
+<span class="s2">&quot;2&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/France&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Defender_(association_football)&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Mathieu_Debuchy&quot;</span>
+<span class="s2">&quot;3&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/England&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Defender_(association_football)&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Kieran_Gibbs&quot;</span>
+<span class="s2">&quot;4&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Germany&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Defender_(association_football)&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Per_Mertesacker&quot;</span>
+<span class="s2">&quot;6&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/France&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Defender_(association_football)&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Laurent_Koscielny&quot;</span>
+<span class="s2">&quot;7&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Czech_Republic&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Midfielder&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Tom%C3%A1%C5%A1_Rosick%C3%BD&quot;</span>
+<span class="s2">&quot;8&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Spain&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Midfielder&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Mikel_Arteta&quot;</span>
+<span class="s2">&quot;9&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Germany&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Forward_(association_football)&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Lukas_Podolski&quot;</span>
+<span class="s2">&quot;10&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/England&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Midfielder&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Jack_Wilshere&quot;</span>
+<span class="s2">&quot;11&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Germany&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Midfielder&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Mesut_%C3%96zil&quot;</span>
+<span class="s2">&quot;12&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/France&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Forward_(association_football)&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Olivier_Giroud&quot;</span>
+<span class="s2">&quot;13&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Colombia&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Goalkeeper_(association_football)&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/David_Ospina&quot;</span>
+<span class="s2">&quot;14&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/England&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Forward_(association_football)&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Theo_Walcott&quot;</span>
+<span class="s2">&quot;15&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/England&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Midfielder&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Alex_Oxlade-Chamberlain&quot;</span>
+<span class="s2">&quot;16&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Wales&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Midfielder&quot;</span>,<span class="s2">&quot;http://en.wikipedia.org/wiki/Aaron_Ramsey&quot;</span></code></pre></div>
+
+<h4 id="tarql-mapping-1">Tarql mapping</h4>
+
+<p>We could define a mapping to convert the previous CSV file into RDF triples as follows:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">PREFIX dbp: &lt;http://dbpedia.org/property/&gt;
+PREFIX dbo: &lt;http://dbpedia.org/ontology/&gt;
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+
+CONSTRUCT <span class="o">{</span>
+  ?Player a dbo:SoccerPlayer<span class="p">;</span>
+    dbp:number ?number<span class="p">;</span>
+    dbp:birthPlace ?b<span class="p">;</span>
+    dbp:position ?Position<span class="p">;</span>
+<span class="o">}</span>
+FROM &lt;file:table_2.csv&gt; 
+WHERE <span class="o">{</span>
+  BIND <span class="o">(</span>xsd:integer<span class="o">(</span>?No<span class="o">)</span> AS ?number<span class="o">)</span>
+<span class="o">}</span></code></pre></div>
+
+<p>In the previous mapping we have indicated the following:</p>
+
+<ul>
+  <li>the last column is the main entity in each row which is a <code>dbo:SoccerPlayer</code></li>
+  <li>the second column doesn’t contain a column name, so name <code>?b</code> is assigned by default</li>
+  <li>which file are we trying to convert (<code>file:table_2.csv</code>)</li>
+  <li><code>?No</code> is the number of the player in the team which is an integer</li>
+</ul>
+
+<h4 id="result-1">Result</h4>
+
+<p>Executing Tarql with the previous mapping:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">~<span class="nv">$ </span><span class="nb">cd </span>tarql/target/appassembler
+~<span class="nv">$ </span>sh bin/tarql --ntriples ../../examples/ArsenalFC/sample-arsenal-table_2.sparql ../../examples/ArsenalFC/table_2.csv</code></pre></div>
+
+<p>We do get the following RDF in N-Triples format.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">&lt;http://en.wikipedia.org/wiki/Wojciech_Szcz%C4%99sny&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://dbpedia.org/ontology/SoccerPlayer&gt; .
+&lt;http://en.wikipedia.org/wiki/Wojciech_Szcz%C4%99sny&gt; &lt;http://dbpedia.org/property/number&gt; <span class="s2">&quot;1&quot;</span>^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+&lt;http://en.wikipedia.org/wiki/Wojciech_Szcz%C4%99sny&gt; &lt;http://dbpedia.org/property/birthPlace&gt; &lt;http://en.wikipedia.org/wiki/Poland&gt; .
+&lt;http://en.wikipedia.org/wiki/Wojciech_Szcz%C4%99sny&gt; &lt;http://dbpedia.org/property/position&gt; &lt;http://en.wikipedia.org/wiki/Goalkeeper_<span class="o">(</span>association_football<span class="o">)</span>&gt; .
+&lt;http://en.wikipedia.org/wiki/Mathieu_Debuchy&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://dbpedia.org/ontology/SoccerPlayer&gt; .
+&lt;http://en.wikipedia.org/wiki/Mathieu_Debuchy&gt; &lt;http://dbpedia.org/property/number&gt; <span class="s2">&quot;2&quot;</span>^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+&lt;http://en.wikipedia.org/wiki/Mathieu_Debuchy&gt; &lt;http://dbpedia.org/property/birthPlace&gt; &lt;http://en.wikipedia.org/wiki/France&gt; .
+&lt;http://en.wikipedia.org/wiki/Mathieu_Debuchy&gt; &lt;http://dbpedia.org/property/position&gt; &lt;http://en.wikipedia.org/wiki/Defender_<span class="o">(</span>association_football<span class="o">)</span>&gt; .
+&lt;http://en.wikipedia.org/wiki/Kieran_Gibbs&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://dbpedia.org/ontology/SoccerPlayer&gt; .
+&lt;http://en.wikipedia.org/wiki/Kieran_Gibbs&gt; &lt;http://dbpedia.org/property/number&gt; <span class="s2">&quot;3&quot;</span>^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+&lt;http://en.wikipedia.org/wiki/Kieran_Gibbs&gt; &lt;http://dbpedia.org/property/birthPlace&gt; &lt;http://en.wikipedia.org/wiki/England&gt; .
+&lt;http://en.wikipedia.org/wiki/Kieran_Gibbs&gt; &lt;http://dbpedia.org/property/position&gt; &lt;http://en.wikipedia.org/wiki/Defender_<span class="o">(</span>association_football<span class="o">)</span>&gt; .
+&lt;http://en.wikipedia.org/wiki/Per_Mertesacker&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://dbpedia.org/ontology/SoccerPlayer&gt; .
+&lt;http://en.wikipedia.org/wiki/Per_Mertesacker&gt; &lt;http://dbpedia.org/property/number&gt; <span class="s2">&quot;4&quot;</span>^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+&lt;http://en.wikipedia.org/wiki/Per_Mertesacker&gt; &lt;http://dbpedia.org/property/birthPlace&gt; &lt;http://en.wikipedia.org/wiki/Germany&gt; .
+&lt;http://en.wikipedia.org/wiki/Per_Mertesacker&gt; &lt;http://dbpedia.org/property/position&gt; &lt;http://en.wikipedia.org/wiki/Defender_<span class="o">(</span>association_football<span class="o">)</span>&gt; .
+&lt;http://en.wikipedia.org/wiki/Laurent_Koscielny&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://dbpedia.org/ontology/SoccerPlayer&gt; .
+&lt;http://en.wikipedia.org/wiki/Laurent_Koscielny&gt; &lt;http://dbpedia.org/property/number&gt; <span class="s2">&quot;6&quot;</span>^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+&lt;http://en.wikipedia.org/wiki/Laurent_Koscielny&gt; &lt;http://dbpedia.org/property/birthPlace&gt; &lt;http://en.wikipedia.org/wiki/France&gt; .
+&lt;http://en.wikipedia.org/wiki/Laurent_Koscielny&gt; &lt;http://dbpedia.org/property/position&gt; &lt;http://en.wikipedia.org/wiki/Defender_<span class="o">(</span>association_football<span class="o">)</span>&gt; .
+&lt;http://en.wikipedia.org/wiki/Tom%C3%A1%C5%A1_Rosick%C3%BD&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://dbpedia.org/ontology/SoccerPlayer&gt; .
+&lt;http://en.wikipedia.org/wiki/Tom%C3%A1%C5%A1_Rosick%C3%BD&gt; &lt;http://dbpedia.org/property/number&gt; <span class="s2">&quot;7&quot;</span>^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+&lt;http://en.wikipedia.org/wiki/Tom%C3%A1%C5%A1_Rosick%C3%BD&gt; &lt;http://dbpedia.org/property/birthPlace&gt; &lt;http://en.wikipedia.org/wiki/Czech_Republic&gt; .
+&lt;http://en.wikipedia.org/wiki/Tom%C3%A1%C5%A1_Rosick%C3%BD&gt; &lt;http://dbpedia.org/property/position&gt; &lt;http://en.wikipedia.org/wiki/Midfielder&gt; .
+...</code></pre></div>
+
+<p>Last Update: January 12, 2015</p>
 
   </div>
 </article>

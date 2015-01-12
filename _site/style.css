@@ -121,6 +121,7 @@ a {
 }
 a:hover, a:active {
   color: #2fa4e7;
+  text-decoration: underline;
 }
 
 ul, ol {
